@@ -39,9 +39,8 @@ class Penyakit extends Model
  // Add inverse relationship
     public function gejalas()
     {
-        return $this->belongsToMany(Gejala::class);
-        // Laravel akan menebak nama tabel pivot sebagai 'gejala_penyakit'
-        // dan foreign keys sebagai 'penyakit_id' dan 'gejala_id'.
+    // Pastikan menggunakan withPivot('cf_value')
+    return $this->belongsToMany(Gejala::class, 'gejala_penyakit')->withPivot('cf_value');
     }
     
     /**
@@ -69,4 +68,5 @@ class Penyakit extends Model
     {
         return $this->hasMany(Diagnosa::class);
     }
+    
 }

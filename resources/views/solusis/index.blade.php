@@ -14,9 +14,9 @@
                         {{ session('success') }}
                     </div>
                 @endif
-
-                <a href="{{ route('solusis.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Tambah Solusi Baru</a>
-
+                <button>
+                    <a href="{{ route('solusis.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Tambah Solusi Baru</a>
+                </button>
                 <table class="min-w-full divide-y divide-gray-200 mt-4">
                     <thead>
                         <tr>

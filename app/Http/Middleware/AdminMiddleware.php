@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\User; // <-- IMPORTANT: Add this line to import your User model
+use App\Models\User; // Sudah benar, mengimpor model User
 
 class AdminMiddleware
 {
@@ -23,11 +23,11 @@ class AdminMiddleware
         }
 
         // Get the authenticated user and type-hint it for better IDE support
-        /** @var User $user */ // <-- Add this docblock for IDEs like Intelephense
+        /** @var User $user */ // Sudah benar, untuk membantu autokomplit IDE
         $user = Auth::user();
 
         // Cek apakah user adalah admin menggunakan method isAdmin() dari model User
-        // Now $user is clearly identified as an instance of App\Models\User
+        // Jika metode isAdmin() belum ada di model User, Anda perlu menambahkannya (lihat contoh di atas)
         if (!$user->isAdmin()) {
             abort(403, 'Unauthorized access.'); // Tampilkan error 403 jika bukan admin
         }

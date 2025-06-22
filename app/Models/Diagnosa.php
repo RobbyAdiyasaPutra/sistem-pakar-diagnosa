@@ -28,30 +28,29 @@ class Diagnosa extends Model
         // 'created_at' dan 'updated_at' otomatis di-cast oleh Laravel
     ];
 
-    /**
-     * Get the user that owns the diagnosa.
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the penyakit that was diagnosed.
-     */
-    public function penyakit(): BelongsTo
-    {
-        return $this->belongsTo(Penyakit::class);
-    }
 
     /**
      * Accessor untuk mendapatkan detail objek Gejala dari gejala_terpilih.
      * Menggunakan ini akan memuat gejala secara efisien.
      */
-    public function getGejalaTerpilihDetailAttribute(): Collection
+        // Accessor untuk mendapatkan detail objek Gejala
+    public function getGejalaTerpilihDetailAttribute()
     {
-        // Memuat semua gejala yang ID-nya ada di `gejala_terpilih`
-        // dan mengembalikan sebagai Collection objek Gejala
-        return Gejala::whereIn('id', $this->gejala_terpilih ?? [])->get();
+        if (!empty($this->gejala_terpilih) && is_array($this->gejala_terpilih)) {
+            return \App\Models\Gejala::whereIn('id', $this->gejala_terpilih)->get();
+        }
+        return collect(); // Mengembalikan koleksi kosong jika tidak ada gejala
+    }
+
+    // Relasi ke User
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Relasi ke Penyakit (opsional, jika diagnosa menghasilkan penyakit)
+    public function penyakit()
+    {
+        return $this->belongsTo(Penyakit::class);
     }
 }
