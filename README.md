@@ -10,7 +10,7 @@
 ## About Laravel
 # Nama Proyek
 
-![Demo GIF](/public/build/assets/Computer%20Working%20GIF.gif)
+![alt text](WorkingGIF.gif)
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
@@ -48,7 +48,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Active Logic](https://activelogic.com)**
 
 ## Contributing
-
+![alt text](image-10.png)
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## Code of Conduct
