@@ -8,6 +8,9 @@
 </p>
 
 ## About Laravel
+# Nama Proyek
+
+![Demo GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmljMHVmb2hibTJsdzdraTM3MDY0dmoxdnRrbDdrN2xpbzA2bWY3cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5Zesu5VPNGJlm/giphy.gif)
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
