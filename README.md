@@ -13,62 +13,71 @@
 
 ---
 
-# 🧠 Diagnosa Gejala Mental Siswa
+# 💀 Diagnosa Mental Buat yang Sok Kuat
 
-Selamat datang di sistem diagnosa gejala mental!  
-Sebuah aplikasi yang siap membantu kamu menilai apakah seseorang sedang stres, cemas, burnout, atau cuma... butuh liburan panjang. 🏖️
-
-Kalau kamu sering ngomong:
-> "Aku baik-baik aja kok..." (padahal jam 3 pagi nangis sambil scroll TikTok)  
-Mungkin sistem ini bisa bantu kamu atau siswa lain yang diam-diam butuh pertolongan ❤️
+Bro, lo sering bilang "gw fine" padahal mata sembab kayak abis nonton drama Korea?  
+Atau diem-diem nangis tiap malem sambil muter lagu Sendu For You volume 6?  
+Lemah. Udah saatnya lo cek mental lo pake sistem ini.
 
 ---
 
-## 🎬 Demo Aplikasi (kurang serius? ya emang...)
+## 🎬 Demo Biar Lo Nggak Cuma Bacot
 
-![Mental Health Checkup](KingBaldwinIVHandRaise.jpeg)
+![Working GIF](WorkingGIF.gif)
 
----
-
-## ✨ Fitur Utama
-
-- 📋 Input gejala dan keluhan siswa
-- 🧮 Perhitungan otomatis menggunakan metode VIKOR
-- 📊 Hasil peringkat dengan rekomendasi
-- 🖨️ Export PDF hasil skrining
-- 🤖 Bebas dari judgment manusia
+> Nih liat, bukan cuma tulisan doang. Sistemnya *kerja beneran*, ga kayak lo yang bilang "mau berubah" tiap tahun baru.
 
 ---
 
-## 📚 Tentang Teknologi
+## 📸 Screenshot Suasana Pas Lo Didiagnosa
 
-Dibangun dengan Laravel — karena kalau mau ngoding sistem yang serius, ya pakai framework yang serius juga (tapi developernya bisa tetap ngopi sambil ngoding 😎)
+![King Mode](KingBaldwinIVHandRaise.jpeg)
 
-- Routing cepat seperti overthinking tengah malam
-- Eloquent ORM: bikin query database semudah nge-chat mantan (eh...)
-- Otomatisasi proses penilaian yang *lumayan lebih bijak dari sebagian guru BK*
+> *"Sakit jiwa tapi masih punya style."* – Baldwin IV, probably.
 
 ---
 
-## 👏 Kontribusi & Pengembangan
+## ⚙️ Fitur Gajelas Tapi Kepake
 
-Punya ide lucu atau saran serius?  
-Mau tambahin gejala baru kayak *"suka ngomong sendiri setelah nonton drakor"*?  
-Silakan kontribusi di repo ini atau kirim pull request.
-
----
-
-## ⚠️ Disclaimer
-
-Aplikasi ini **bukan pengganti psikolog profesional**.  
-Kalau kamu merasa benar-benar butuh bantuan, jangan takut untuk bicara dengan orang yang kamu percaya atau tenaga ahli ya. 🤝
+- ✍️ Input gejala lo yang absurd kayak "ngomong sendiri depan kaca"
+- 🤯 Metode VIKOR buat nentuin lo stress beneran atau cuma drama
+- 🏆 Ranking mental: siapa yang *udah lewat batas*, siapa yang tinggal di garis start
+- 🖨️ Cetak hasil lo biar bisa ditunjukin ke guru BK atau sekadar buat konten story
 
 ---
 
-## 📝 Lisensi
+## 🤓 Teknologi? Laravel Gitu Loh
 
-Proyek ini open-source di bawah lisensi [MIT](https://opensource.org/licenses/MIT).  
-Gunakan dengan bijak. Jangan buat diagnosa sambil maraton film horor. 😅
+Laravel: framework untuk orang yang ngerti coding tapi juga ngerti healing.  
+Karena ngoding sambil stres tuh buat yang lemah.
+
+- Fast routing, unlike your slow emotional healing
+- Eloquent ORM – kayak lo ngatur database sambil sok bijak
+- Queue & job? Tenang, semua bisa jalan walau lo rebahan
 
 ---
 
+## 🙌 Kontribusi
+
+Lo ngerasa lebih jago dari kami? Gas, pull request.  
+Punya ide gejala aneh kayak "panik liat notifikasi mantan"?  
+Tambahin aja, biar sistem makin relate sama kaum rebahan rapuh.
+
+---
+
+## ⚠️ Disclaimer Buat yang Nganggep Ini Serius
+
+Sistem ini bukan psikolog, bro.  
+Lo kalau udah *mentalnya meledak*, jangan cuma ngandelin ini.  
+Cari bantuan asli. Ini cuma tools, bukan juru selamat.
+
+---
+
+## 🧾 Lisensi
+
+MIT License.  
+Pake aja sepuas lo. Tapi kalo bikin versi yang lebih chaos, tag kita juga.
+
+---
+
+> Dibuat dengan secuil logika dan segudang sindiran untuk yang lemah tapi denial. Peace out ✌️
