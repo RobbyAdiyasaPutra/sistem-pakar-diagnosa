@@ -26,7 +26,7 @@ Mungkin sistem ini bisa bantu kamu atau siswa lain yang diam-diam butuh pertolon
 
 ## 🎬 Demo Aplikasi (kurang serius? ya emang...)
 
-![Mental Health Checkup](WorkingGIF.mp4)
+![Mental Health Checkup](KingBaldwinIVHandRaise.jpeg)
 
 ---
 
