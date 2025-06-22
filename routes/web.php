@@ -13,6 +13,7 @@ use App\Http\Controllers\KasusController;
 use App\Http\Controllers\SolusiController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController; // <--- BARIS BARU UNTUK DASHBOARD ADMIN
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,17 +36,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/logout', [LoginController::class, 'logout']);
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
     // Diagnosa resource is now directly under 'auth' middleware,
-    // and the controller handles the granular access based on roles.
     Route::resource('diagnosas', DiagnosaController::class);
     Route::resource('articles', ArticleController::class);
 
-    // These resources remain under 'admin' middleware as only admins should access them at all
+    // Grouping admin routes under 'admin' middleware
     Route::middleware('admin')->group(function () {
+        // <--- UBAH BAGIAN INI UNTUK DASHBOARD ADMIN
+       Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        // PASTIKAN ANDA MENGHAPUS ATAU MENGGANTI ROUTE LAMA YANG SEPERTI INI:
+        // Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
+        // KARENA INI AKAN BENTROK ATAU TIDAK AKAN MENGGUNAKAN CONTROLLER BARU ANDA
+
         Route::resource('penyakits', PenyakitController::class);
         Route::resource('gejalas', GejalaController::class);
         Route::resource('kasuses', KasusController::class);

@@ -15,7 +15,12 @@
                     </div>
                 @endif
 
-                <a href="{{ route('roles.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Tambah Role Baru</a>
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-medium text-gray-900">Daftar Pengguna</h3>
+                    <a href="{{ route('roles.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    <i class="fas fa-plus mr-2"></i> Tambah User Baru
+                </a>
+            </div>
 
                 <table class="min-w-full divide-y divide-gray-200 mt-4">
                     <thead>

@@ -25,10 +25,11 @@ class ArticleController extends Controller
     public function create()
     {
         // If authors are selected manually, otherwise `Auth::id()` will be used.
-        $authors = User::all(); // Or filter by roles if only specific roles can be authors
+         $authors = User::all();
+
+        // Lewatkan variabel 'authors' ke tampilan articles.create
         return view('articles.create', compact('authors'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
