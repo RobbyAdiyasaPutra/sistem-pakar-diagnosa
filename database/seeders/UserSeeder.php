@@ -14,24 +14,30 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Admin User
-        User::create([
-            'name' => 'Admin Sintia CareMore',
-            'email' => 'sintia.admin@caremore.com',
-            'password' => Hash::make('adminsintiacaremore'), // Ganti dengan password yang kuat di produksi
-            'usertype' => 'admin',
-            'email_verified_at' => now(),
-            'is_active' => true,
-        ]);
+        User::firstOrCreate(
+            ['email' => 'sintia.admin@caremore.com'],
+            [
+                'name' => 'Admin Sintia CareMore',
+                'password' => Hash::make('adminsintiacaremore'), // Ganti dengan password yang kuat di produksi
+                'role_id' => 1,
+                'email_verified_at' => now(),
+                'is_active' => true,
+            ]
+        );
 
-        User::create([
-            'name' => 'Robby Users',
-            'email' => 'robbypasien@caremore.com',
-            'password' => Hash::make('robbypasiencaremore'), // Ganti dengan password yang kuat di produksi
-            'usertype' => 'admin',
-            'email_verified_at' => now(),
-            'is_active' => true,
-        ]);
-        // Regular Users
-        User::factory()->count(10)->create(); // Menggunakan factory untuk 10 user biasa
+        // Robby User
+        User::firstOrCreate(
+            ['email' => 'robbypasien@caremore.com'],
+            [
+                'name' => 'Robby Users',
+                'password' => Hash::make('robbypasiencaremore'), // Ganti dengan password yang kuat di produksi
+                'role_id' => 2,
+                'email_verified_at' => now(),
+                'is_active' => true,
+            ]
+        );
+
+        // Tambahan Users dari Factory
+        User::factory()->count(10)->create();
     }
 }

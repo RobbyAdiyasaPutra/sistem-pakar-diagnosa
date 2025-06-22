@@ -6,61 +6,67 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
+    use HasTeams;
 
-    /**
-     * 
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role',
-        'is_active',
+        'role_id', // Pastikan ini ada jika Anda menggunakan kolom role_id
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     */
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
     /**
-     * The attributes that should be cast.
+     * Check if the user has an 'admin' role.
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'is_active' => 'boolean',
-    ];
+    public function isAdmin(): bool
+    {
+        return $this->role_id === 1; // Sesuaikan dengan ID role admin di DB Anda
+    }
 
     /**
-     * Relasi ke model Role (jika kamu pakai tabel roles terpisah).
-     * Hanya digunakan jika kamu punya tabel roles.
+     * Check if the user has a 'regular user' role.
+     */
+    public function isUser(): bool
+    {
+        return $this->role_id === 2; // Sesuaikan dengan ID role user biasa di DB Anda
+    }
+
+    /**
+     * Define the relationship to the Role model.
      */
     public function role()
     {
         return $this->belongsTo(Role::class);
-    }
-
-    /**
-     * Cek apakah user adalah admin.
-     */
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    /**
-     * Cek apakah user adalah user biasa.
-     */
-    public function isUser()
-    {
-        return $this->role === 'user';
     }
 }
