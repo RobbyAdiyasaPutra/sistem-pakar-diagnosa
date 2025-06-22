@@ -35,10 +35,29 @@ return [
     |
     */
 
+    // config/auth.php
+
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        // Add your admin guard
+        'admin' => [
+            'driver' => 'session', // Or 'token' if it's an API admin
+            'provider' => 'admins', // This links to the 'admins' provider below
+        ],
+    ],
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        // Add your admins provider
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class, // Points to your Admin model
         ],
     ],
 

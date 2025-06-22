@@ -1,51 +1,65 @@
 <?php
 
-// routes/web.php
+use Illuminate\Support\Facades\Route; // Penting: Tambahkan ini
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ForgotPasswordController; // Optional
-use App\Http\Controllers\Auth\ResetPasswordController; // Optional
+use App\Http\Controllers\Auth\ForgotPasswordController; // Optional, pastikan sudah ada jika ingin menggunakan
+use App\Http\Controllers\Auth\ResetPasswordController; // Optional, pastikan sudah ada jika ingin menggunakan
+use App\Http\Controllers\ArticleController; // Import ArticleController
+use App\Http\Controllers\DiagnosaController; // Import DiagnosaController
+use App\Http\Controllers\PenyakitController; // Import PenyakitController
+use App\Http\Controllers\GejalaController;   // Import GejalaController
+use App\Http\Controllers\KasusController;    // Import KasusController
+use App\Http\Controllers\SolusiController;   // Import SolusiController
+use App\Http\Controllers\RoleController;     // Import RoleController
+use App\Http\Controllers\UserController;     // Import UserController
 
-// Autentikasi
+// Rute untuk halaman utama (welcome)
+// Ketika user mengakses URL root (misal: yourdomain.com/ atau localhost/yourproject/public/)
+Route::get('/', function () {
+    return view('welcome'); // Menampilkan resources/views/welcome.blade.php
+})->name('welcome'); // Memberi nama rute untuk memudahkan referensi
+
+// Rute Autentikasi untuk pengguna yang BELUM login
 Route::middleware('guest')->group(function () {
     // Login
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
 
-    // Register
+    // Registrasi
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'register']);
 
-    // Forgot Password (Opsional)
+    // Forgot Password (Opsional: pastikan controller dan viewnya ada)
     Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
     Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 });
 
-
+// Rute yang memerlukan autentikasi (untuk pengguna yang SUDAH login)
 Route::middleware('auth')->group(function () {
-    // Logout (biasanya POST, tapi bisa GET juga untuk kemudahan testing)
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); // Disarankan POST
-    Route::get('/logout', [LoginController::class, 'logout']); // Alternatif GET untuk logout
+    // Logout (Disarankan menggunakan POST untuk keamanan, GET hanya untuk kemudahan testing/debugging)
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [LoginController::class, 'logout']); // Alternatif GET, pertimbangkan untuk dihapus di produksi
 
-    // Rute dashboard atau halaman yang hanya bisa diakses setelah login
+    // Rute dashboard
     Route::get('/dashboard', function () {
-        return view('dashboard'); // Anda perlu membuat view ini
+        return view('dashboard'); // Pastikan Anda memiliki file view 'dashboard.blade.php'
     })->name('dashboard');
 
-    // Tambahkan rute resource yang membutuhkan autentikasi di sini
-    // Contoh:
-    Route::resource('diagnosas', App\Http\Controllers\DiagnosaController::class);
-    Route::resource('articles', App\Http\Controllers\ArticleController::class);
+    // Rute resource yang hanya bisa diakses setelah login (pengguna biasa & admin)
+    Route::resource('diagnosas', DiagnosaController::class);
+    Route::resource('articles', ArticleController::class);
 
     // Rute yang hanya bisa diakses oleh admin
-    Route::middleware('admin')->group(function () { // 'admin' adalah middleware custom yang akan kita buat
-        Route::resource('penyakits', App\Http\Controllers\PenyakitController::class);
-        Route::resource('gejalas', App\Http\Controllers\GejalaController::class);
-        Route::resource('kasuses', App\Http\Controllers\KasusController::class);
-        Route::resource('solusis', App\Http\Controllers\SolusiController::class);
-        Route::resource('roles', App\Http\Controllers\RoleController::class);
-        Route::resource('users', App\Http\Controllers\UserController::class);
+    // Pastikan middleware 'admin' sudah terdaftar di app/Http/Kernel.php
+    Route::middleware('admin')->group(function () {
+        Route::resource('penyakits', PenyakitController::class);
+        Route::resource('gejalas', GejalaController::class);
+        Route::resource('kasuses', KasusController::class);
+        Route::resource('solusis', SolusiController::class);
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', UserController::class);
     });
 });
